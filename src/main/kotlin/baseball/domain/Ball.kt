@@ -10,15 +10,9 @@ class Ball(private val numbers: List<Int>) {
         require(!numbers.map { it in Constants.MIN_BALL_NUMBER..Constants.MAX_BALL_NUMBER }.contains(false))
     }
 
-    fun firstNumber(): Int {
-        return numbers[0]
-    }
+    fun getNumbers() = numbers
 
-    fun secondNumber(): Int {
-        return numbers[1]
-    }
+    fun contains(number: Int) = numbers.contains(number)
 
-    fun thirdNumber(): Int {
-        return numbers[2]
-    }
+    fun sameAs(number: Int, index: Int) = numbers[index] == number
 }

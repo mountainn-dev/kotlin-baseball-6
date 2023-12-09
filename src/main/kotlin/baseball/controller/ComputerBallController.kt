@@ -4,8 +4,10 @@ import baseball.constants.Constants
 import baseball.domain.Ball
 import camp.nextstep.edu.missionutils.Randoms
 
-class BaseballGameController {
+class ComputerBallController {
     private lateinit var ball: Ball
+
+    fun getBall() = ball
 
     fun setBall() {
         ball = Ball(generateBallNumbers())

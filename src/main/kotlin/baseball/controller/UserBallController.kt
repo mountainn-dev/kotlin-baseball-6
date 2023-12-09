@@ -9,6 +9,8 @@ class UserBallController {
     private val outputView = OutputView()
     private lateinit var ball: Ball
 
+    fun getBall() = ball
+
     fun setBall() {
         requestBallNumbers()
         ball = Ball(ballNumbersFromUser())

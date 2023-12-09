@@ -1,15 +1,18 @@
 package baseball
 
-import baseball.controller.BaseballGameController
+import baseball.controller.ComputerBallController
 import baseball.controller.UserBallController
+import baseball.controller.Referee
 
 class BaseballGame {
-    private val baseballGameController = BaseballGameController()
+    private val baseballGameController = ComputerBallController()
     private val userBallController = UserBallController()
+    private val referee = Referee()
 
     fun run() {
         generateComputerBall()
         generateUserBall()
+        judge()
     }
 
     private fun generateComputerBall() {
@@ -18,6 +21,10 @@ class BaseballGame {
 
     private fun generateUserBall() {
         userBallController.setBall()
+    }
+
+    private fun judge() {
+        referee.judge(baseballGameController.getBall(), userBallController.getBall())
     }
 
 }
