@@ -13,13 +13,14 @@ class Referee {
 
     fun judge(computerBall: Ball, userBall: Ball) {
         compareUserBallToComputerBall(computerBall, userBall)
+        showResult()
     }
 
     private fun compareUserBallToComputerBall(computerBall: Ball, userBall: Ball) {
         ballCount = 0
         strikeCount = 0
 
-        for (i in 0..userBall.getNumbers().size) {
+        for (i in userBall.getNumbers().indices) {
             if (isBall(compareUserNumberToComputerBall(computerBall, userBall.getNumbers()[i], i))) ballCount++
             if (isStrike(compareUserNumberToComputerBall(computerBall, userBall.getNumbers()[i], i))) strikeCount++
         }
@@ -32,6 +33,10 @@ class Referee {
         if (computerBall.sameAs(number, index)) ballState = BallState.STRIKE
 
         return ballState
+    }
+
+    private fun showResult() {
+        outputView.printInningResult(ballCount, strikeCount)
     }
 
     fun isGameEnd() = gameState == END
