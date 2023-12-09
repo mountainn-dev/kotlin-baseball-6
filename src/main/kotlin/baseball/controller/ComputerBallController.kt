@@ -10,12 +10,20 @@ class ComputerBallController {
     fun getBall() = ball
 
     fun setBall() {
-        ball = Ball(generateBallNumbers())
+        ball = Ball(validatedBallNumbers())
     }
 
-    private fun generateBallNumbers(): List<Int> {
-        return Randoms.pickUniqueNumbersInRange(
-            Constants.MIN_BALL_NUMBER, Constants.MAX_BALL_NUMBER, Constants.BALL_NUMBER_COUNT
-        )
+    private fun validatedBallNumbers(): List<Int> {
+        val ballNumbers = mutableListOf<Int>()
+
+        while (ballNumbers.distinct().size != Constants.BALL_NUMBER_COUNT) {
+            ballNumbers.add(generateBallNumbers())
+        }
+
+        return ballNumbers
+    }
+
+    private fun generateBallNumbers(): Int {
+        return Randoms.pickNumberInRange(Constants.MIN_BALL_NUMBER, Constants.MAX_BALL_NUMBER)
     }
 }
