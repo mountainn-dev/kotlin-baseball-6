@@ -13,7 +13,7 @@ class BaseballGameController {
 
     private fun generateBallNumbers(): List<Int> {
         return Randoms.pickUniqueNumbersInRange(
-            Constants.MAX_BALL_NUMBER, Constants.MAX_BALL_NUMBER, Constants.BALL_NUMBER_COUNT
+            Constants.MIN_BALL_NUMBER, Constants.MAX_BALL_NUMBER, Constants.BALL_NUMBER_COUNT
         )
     }
 }
