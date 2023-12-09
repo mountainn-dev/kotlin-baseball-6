@@ -6,7 +6,7 @@ class BaseballGame {
     private val baseballGameController = BaseballGameController()
 
     fun run() {
-
+        generateComputerBall()
     }
 
     private fun generateComputerBall() {
