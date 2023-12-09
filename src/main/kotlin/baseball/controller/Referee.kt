@@ -1,13 +1,14 @@
 package baseball.controller
 
 import baseball.OutputView
+import baseball.constants.Constants
 import baseball.domain.Ball
 import baseball.state.BallState
 import baseball.state.GameState.*
 
 class Referee {
     private val outputView = OutputView()
-    private val gameState = NORMAL
+    private var gameState = NORMAL
     private var ballCount = 0
     private var strikeCount = 0
 
@@ -37,6 +38,11 @@ class Referee {
 
     private fun showResult() {
         outputView.printInningResult(ballCount, strikeCount)
+
+        if (strikeCount == Constants.BALL_NUMBER_COUNT) {
+            gameState = END
+            outputView.printGameEndMessage()
+        }
     }
 
     fun isGameEnd() = gameState == END

@@ -31,6 +31,10 @@ class OutputView {
         }
     }
 
+    fun printGameEndMessage() {
+        println(Result.GAME_END_MESSAGE)
+    }
+
     companion object {
         private const val BLANK = " "
         private const val ZERO = 0

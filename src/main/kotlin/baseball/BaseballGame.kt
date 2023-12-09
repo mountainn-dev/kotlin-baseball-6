@@ -11,8 +11,11 @@ class BaseballGame {
 
     fun run() {
         generateComputerBall()
-        generateUserBall()
-        judge()
+
+        while (!referee.isGameEnd()) {
+            generateUserBall()
+            judge()
+        }
     }
 
     private fun generateComputerBall() {
