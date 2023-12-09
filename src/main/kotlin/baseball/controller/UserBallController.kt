@@ -20,5 +20,5 @@ class UserBallController {
         outputView.printRequestBallNumbersMessage()
     }
 
-    private fun ballNumbersFromUser() = inputView.readBallNumbers()
+    private fun ballNumbersFromUser() = inputView.readNumbers()
 }

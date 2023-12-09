@@ -1,8 +1,7 @@
-package baseball.controller
+package baseball.domain
 
 import baseball.OutputView
 import baseball.constants.Constants
-import baseball.domain.Ball
 import baseball.state.BallState
 import baseball.state.GameState.*
 
@@ -46,6 +45,10 @@ class Referee {
     }
 
     fun isGameEnd() = gameState == END
+
+    fun setGameStateNormal() {
+        gameState = NORMAL
+    }
 
     private fun isStrike(ballState: BallState) = ballState == BallState.STRIKE
     private fun isBall(ballState: BallState) = ballState == BallState.BALL

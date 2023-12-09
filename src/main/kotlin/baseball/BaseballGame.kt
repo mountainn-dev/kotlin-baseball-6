@@ -1,16 +1,25 @@
 package baseball
 
+import baseball.controller.BaseballGameController
 import baseball.controller.ComputerBallController
 import baseball.controller.UserBallController
-import baseball.controller.Referee
+import baseball.domain.Referee
 
 class BaseballGame {
-    private val baseballGameController = ComputerBallController()
+    private val baseballGameController = BaseballGameController()
+    private val computerBallController = ComputerBallController()
     private val userBallController = UserBallController()
     private val referee = Referee()
 
     fun run() {
-        generateComputerBall()
+        do {
+            playGame()
+            baseballGameController.setCommand()
+        } while (baseballGameController.isGameRestarted())
+    }
+
+    private fun playGame() {
+        reset()
 
         while (!referee.isGameEnd()) {
             generateUserBall()
@@ -18,8 +27,9 @@ class BaseballGame {
         }
     }
 
-    private fun generateComputerBall() {
-        baseballGameController.setBall()
+    private fun reset() {
+        referee.setGameStateNormal()
+        computerBallController.setBall()
     }
 
     private fun generateUserBall() {
@@ -27,7 +37,7 @@ class BaseballGame {
     }
 
     private fun judge() {
-        referee.judge(baseballGameController.getBall(), userBallController.getBall())
+        referee.judge(computerBallController.getBall(), userBallController.getBall())
     }
 
 }

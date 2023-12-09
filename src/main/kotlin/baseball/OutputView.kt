@@ -9,6 +9,10 @@ class OutputView {
         print(Request.REQUEST_BALL_NUMBERS_MESSAGE)
     }
 
+    fun printRequestCommandNumberMessage() {
+        println(Request.REQUEST_COMMAND_NUMBER_MESSAGE)
+    }
+
     fun printInningResult(ballCount: Int, strikeCount: Int) {
         if (ballCount == ZERO && strikeCount == ZERO) println(Result.NOTHING_MESSAGE)
         else {
